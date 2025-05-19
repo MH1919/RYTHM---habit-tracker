@@ -18,7 +18,7 @@ position : fixed;
 left:20px;
 top: 20px;
 bottom:20px;
-width: 250px;
+width: 200px;
 background-color: #18181b;
 display: flex;
 flex-direction: column;
@@ -27,13 +27,17 @@ border-radius:20px;
 z-index:100;
 `;
 
-const Logo =styled.div`
+const Logo = styled.div`
 font-size: 24px;
-font-weight: bold;
-margin-bottom:40px;
-text-align:center;
-letter-spacing:2px;
-
+font-weight: 700;
+margin-bottom: 40px;
+text-align: center;
+letter-spacing: 1px;
+font-family: 'Inter', sans-serif;
+background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 const NavSection = styled.div`
 margin-bottom: 32px;
@@ -44,13 +48,16 @@ padding: 12px 24px;
 cursor: pointer;
 margin: 4px 12px;
 color: ${({active}) => active ? '#fff' : '#71717a'};
-font-weight: ${({active}) => active ? '600' : 'normal'};
+font-weight: ${({active}) => active ? '600' : '500'};
+font-size: 0.95rem;
+letter-spacing: 0.2px;
 transition: all 0.2s ease;
 display: flex;
 align-items: center;
 gap: 12px;
 border-left: 2px solid ${({active}) => active ? '#fff' : 'transparent'};
 border-radius: 0 8px 8px 0;
+font-family: 'Inter', sans-serif;
 
 &:hover {
     color: #fff;
@@ -68,6 +75,7 @@ flex: 1;
 const Logout = styled(NavItem)`
 color: #f87171;
 border-left: none;
+font-weight: 500;
 &:hover {
     background: rgba(248, 113, 113, 0.1);
 }
