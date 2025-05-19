@@ -1,5 +1,13 @@
 import React,{useState} from 'react';
 import styled from 'styled-components';
+import { 
+    HomeIcon, 
+    ChartBarIcon, 
+    CalendarIcon, 
+    ChartPieIcon, 
+    BellIcon, 
+    Cog6ToothIcon 
+} from '@heroicons/react/24/outline';
 
 interface NavItemProps{
     active?:boolean;
@@ -32,27 +40,36 @@ margin-bottom: 32px;
 `;
 
 const NavItem = styled.div<NavItemProps>`
-padding:14px 32px;
-cursor:pointer;
-border-radius:12px;
-margin:4px 0;
-background: ${({active}) => active ? '#fff' : 'transparent'};
-color:${({active}) => active ? '#18181b' : '#fff'};
-font-weight: ${({active}) => active ? 'bold' : 'normal'};
-transition: background 0.2s, color 0.2s;
-&:hover{
-    background: #27272a;
+padding: 12px 24px;
+cursor: pointer;
+margin: 4px 12px;
+color: ${({active}) => active ? '#fff' : '#71717a'};
+font-weight: ${({active}) => active ? '600' : 'normal'};
+transition: all 0.2s ease;
+display: flex;
+align-items: center;
+gap: 12px;
+border-left: 2px solid ${({active}) => active ? '#fff' : 'transparent'};
+border-radius: 0 8px 8px 0;
+
+&:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
+svg {
+    width: 20px;
+    height: 20px;
+}
 `;
 const Spacer = styled.div`
 flex: 1;
 `;
 const Logout = styled(NavItem)`
 color: #f87171;
-background: none;
-&:hover{
-    background: #27272a;
+border-left: none;
+&:hover {
+    background: rgba(248, 113, 113, 0.1);
 }
 `;
 
@@ -63,21 +80,33 @@ const Sidebar = () => {
         <SidebarContainer>
             <Logo>RYTHM</Logo>
             <NavSection>
-                <NavItem active={active === 'Dashboard'} onClick={() => setActive('Dashboard')}>Dashboard</NavItem>
-                <NavItem active={active === 'My Habits'} onClick={() => setActive('My Habits')}>Analytics</NavItem>
-                <NavItem active={active === 'Calendar'} onClick={() => setActive('Calendar')}>Calendar</NavItem>
-                <NavItem active={active === 'Statistics'} onClick={() => setActive('Statistics')}>Statistics</NavItem>
-                <NavItem active={active === 'Reminders'} onClick={() => setActive('Reminders')}>Reminders</NavItem>
-                    {/* maybe Community????? */}
-                {/* <NavItem active={active === 'Community'} onClick={() => setActive('Community')}>Community</NavItem> */}
-                <NavItem active={active === 'Settings'} onClick={() => setActive('Settings')}>Settings</NavItem>
-
+                <NavItem active={active === 'Dashboard'} onClick={() => setActive('Dashboard')}>
+                    <HomeIcon />
+                    Dashboard
+                </NavItem>
+                <NavItem active={active === 'My Habits'} onClick={() => setActive('My Habits')}>
+                    <ChartBarIcon />
+                    Analytics
+                </NavItem>
+                <NavItem active={active === 'Calendar'} onClick={() => setActive('Calendar')}>
+                    <CalendarIcon />
+                    Calendar
+                </NavItem>
+                <NavItem active={active === 'Statistics'} onClick={() => setActive('Statistics')}>
+                    <ChartPieIcon />
+                    Statistics
+                </NavItem>
+                <NavItem active={active === 'Reminders'} onClick={() => setActive('Reminders')}>
+                    <BellIcon />
+                    Reminders
+                </NavItem>
+                <NavItem active={active === 'Settings'} onClick={() => setActive('Settings')}>
+                    <Cog6ToothIcon />
+                    Settings
+                </NavItem>
             </NavSection>
             <Spacer />
             <Logout onClick={() => setActive('Logout')}>Logout</Logout>
-
-
-
         </SidebarContainer>
     )
 }
