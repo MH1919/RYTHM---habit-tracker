@@ -33,7 +33,7 @@ font-weight: 700;
 margin-bottom: 40px;
 text-align: center;
 letter-spacing: 1px;
-font-family: 'Inter', sans-serif;
+font-family: 'Fredoka', sans-serif;
 background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
@@ -57,7 +57,7 @@ align-items: center;
 gap: 12px;
 border-left: 2px solid ${({active}) => active ? '#fff' : 'transparent'};
 border-radius: 0 8px 8px 0;
-font-family: 'Inter', sans-serif;
+font-family: 'Fredoka', sans-serif;
 
 &:hover {
     color: #fff;
@@ -86,7 +86,7 @@ const Sidebar = () => {
     const [active, setActive] = React.useState('Dashboard');
     return (
         <SidebarContainer>
-            <Logo>RYTHM</Logo>
+           <Logo>Rythm</Logo>
             <NavSection>
                 <NavItem active={active === 'Dashboard'} onClick={() => setActive('Dashboard')}>
                     <HomeIcon />

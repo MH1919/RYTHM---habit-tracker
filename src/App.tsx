@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
 import Sidebar from './components/sidebar'
+import MainContent from './components/MainContent'
 import GlobalStyles from './styles/GlobalStyles'
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
       <GlobalStyles />
       <Sidebar />
+      <MainContent />
     </>
   )
 }
