@@ -7,29 +7,34 @@ const SearchBarWrapper = styled.div`
   align-items: center;
   width: 100%;
   max-width: 800px;
-  margin: 2rem auto;
-  background: #faf6e8;
+  background: transparent;
   border-radius: 2rem;
-  border: 1.5px solid #ede6d2;
+  border: 1.5px solid #18181b;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-  padding: 0.25rem 1rem 0.25rem 0.5rem;
+  padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+  position: relative;
+  gap: 2rem;
 `;
 
 const IconCircle = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f7d6e0;
+  background: #4a90e2;
   border-radius: 50%;
   width: 2.2rem;
   height: 2.2rem;
-  margin-right: 0.75rem;
+  position: absolute;
+  left: -1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 `;
 
 const StyledIcon = styled(MagnifyingGlassIcon)`
   width: 1.3rem;
   height: 1.3rem;
-  color: #18181b;
+  color: #ffffff;
 `;
 
 const Input = styled.input`
@@ -39,8 +44,9 @@ const Input = styled.input`
   font-size: 1.1rem;
   font-family: 'Fredoka', sans-serif;
   color: #18181b;
-  padding: 0.7rem 0.5rem;
+  padding: 0.7rem 0.5rem 0.7rem 1.5rem;
   outline: none;
+  min-width: 200px;
 
   &::placeholder {
     color: #b6b6b6;
@@ -51,8 +57,9 @@ const Input = styled.input`
 const FilterBar = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 1.5rem;
+  margin-left: 0;
   gap: 0.5rem;
+  min-width: 300px;
 `;
 
 const FilterLabel = styled.span`
@@ -79,19 +86,23 @@ const FilterPill = styled.button<{ selected: boolean }>`
 
   &:hover {
     background: ${({ selected }) => (selected ? '#18181b' : '#f7d6e0')};
-    color: #18181b;
+    color:rgb(99, 99, 255);
   }
 `;
 
-const FILTERS = ['Patients', 'Education', 'Prescriptions', 'Test results'];
+const FILTERS = ['Dashboard', 'Analytics', 'Calendar', 'Reminders'];
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
+  onTodoSearch?: (query: string) => void;
+  onHabitSearch?: (query: string) => void;
   placeholder?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
   onSearch,
+  onTodoSearch,
+  onHabitSearch,
   placeholder = 'Search habits, tasks, or reminders...'
 }) => {
   const [selectedFilter, setSelectedFilter] = useState(FILTERS[0]);
@@ -111,7 +122,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         onChange={handleChange}
       />
       <FilterBar>
-        <FilterLabel>In:</FilterLabel>
+        <FilterLabel>in:</FilterLabel>
         {FILTERS.map((filter) => (
           <FilterPill
             key={filter}

@@ -6,7 +6,9 @@ import {
     CalendarIcon, 
     ChartPieIcon, 
     BellIcon, 
-    Cog6ToothIcon 
+    Cog6ToothIcon,
+    ClipboardDocumentListIcon,
+    ClockIcon
 } from '@heroicons/react/24/outline';
 
 interface NavItemProps{
@@ -15,58 +17,61 @@ interface NavItemProps{
 
 const SidebarContainer = styled.div`
 position : fixed;
-left:20px;
-top: 20px;
-bottom:20px;
-width: 200px;
-background-color: #18181b;
+left: 32px;
+top: 32px;
+bottom: 32px;
+width: 220px;
+background: rgba(255,255,255,0.85);
+box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+backdrop-filter: blur(12px);
 display: flex;
 flex-direction: column;
-padding: 24px 0;
-border-radius:20px;
+padding: 32px 0 24px 0;
+border-radius: 24px;
 z-index:100;
 `;
 
 const Logo = styled.div`
-font-size: 24px;
+font-size: 26px;
 font-weight: 700;
-margin-bottom: 40px;
+margin-bottom: 48px;
 text-align: center;
 letter-spacing: 1px;
-font-family: 'Fredoka', sans-serif;
-background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+font-family: 'Inter', 'Fredoka', sans-serif;
+color: #222;
+background: none;
+text-shadow: none;
 `;
 const NavSection = styled.div`
-margin-bottom: 32px;
+margin-bottom: 40px;
 `;
 
 const NavItem = styled.div<NavItemProps>`
-padding: 12px 24px;
+padding: 14px 32px;
 cursor: pointer;
-margin: 4px 12px;
-color: ${({active}) => active ? '#fff' : '#71717a'};
-font-weight: ${({active}) => active ? '600' : '500'};
-font-size: 0.95rem;
+margin: 6px 16px;
+color: ${({active}) => active ? '#18181b' : '#b0b0b0'};
+font-weight: ${({active}) => active ? '800' : '500'};
+font-size: 1.05rem;
 letter-spacing: 0.2px;
 transition: all 0.2s ease;
 display: flex;
 align-items: center;
-gap: 12px;
-border-left: 2px solid ${({active}) => active ? '#fff' : 'transparent'};
-border-radius: 0 8px 8px 0;
-font-family: 'Fredoka', sans-serif;
+gap: 14px;
+border-left: 3px solid ${({active}) => active ? '#222' : 'transparent'};
+border-radius: 0 12px 12px 0;
+font-family: 'Inter', 'Fredoka', sans-serif;
+background: ${({active}) => active ? '#fff' : 'none'};
+box-shadow: ${({active}) => active ? '0 2px 8px 0 rgba(31,38,135,0.06)' : 'none'};
 
 &:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.05);
+    color: #18181b;
+    background: ${({active}) => active ? '#fff' : 'rgba(0,0,0,0.04)'};
 }
 
 svg {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
 }
 `;
 const Spacer = styled.div`
@@ -77,7 +82,7 @@ color: #f87171;
 border-left: none;
 font-weight: 500;
 &:hover {
-    background: rgba(248, 113, 113, 0.1);
+    background: rgba(248, 113, 113, 0.08);
 }
 `;
 
@@ -111,6 +116,14 @@ const Sidebar = () => {
                 <NavItem active={active === 'Settings'} onClick={() => setActive('Settings')}>
                     <Cog6ToothIcon />
                     Settings
+                </NavItem>
+                <NavItem active={active === 'To-Do List'} onClick={() => setActive('To-Do List')}>
+                    <ClipboardDocumentListIcon />
+                    To-Do List
+                </NavItem>
+                <NavItem active={active === 'Habit Tracker'} onClick={() => setActive('Habit Tracker')}>
+                    <ClockIcon />
+                    Habit Tracker
                 </NavItem>
             </NavSection>
             <Spacer />
